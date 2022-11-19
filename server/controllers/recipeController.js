@@ -8,7 +8,24 @@ exports.homepage = async (req, res) => {
     const limitNumber = 5;
     const categories = await Category.find({}).limit(limitNumber);
 
-    res.render("index", { title: "Cooking Blog - Homepage", categories });
+    // Latest Recipes
+    const latest = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
+
+    // Thai
+    const thai = await Recipe.find({ category: "Thai" }).limit(limitNumber);
+
+    // American
+    const american = await Recipe.find({ category: "American" }).limit(
+      limitNumber
+    );
+    // Chinese
+    const chinese = await Recipe.find({ category: "Chinese" }).limit(
+      limitNumber
+    );
+
+    const food = { latest, thai, american, chinese };
+
+    res.render("index", { title: "Cooking Blog - Homepage", categories, food });
   } catch (err) {
     res.status(500).send({ message: err.message || "Error occured" });
   }
@@ -28,37 +45,3 @@ exports.exploreCategories = async (req, res) => {
     res.status(500).send({ message: err.message || "Error occured" });
   }
 };
-
-// Inserting Data
-// const insertDummyCategoryData = async () => {
-//   try {
-//     await Category.insertMany([
-//       {
-//         name: "Thai",
-//         img: "thai-food.jpg",
-//       },
-//       {
-//         name: "American",
-//         img: "american-food.jpg",
-//       },
-//       {
-//         name: "Chinese",
-//         img: "chinese-food.jpg",
-//       },
-//       {
-//         name: "Mexican",
-//         img: "mexican-food.jpg",
-//       },
-//       {
-//         name: "Indian",
-//         img: "indian-food.jpg",
-//       },
-//       {
-//         name: "Spanish",
-//         img: "spanish-food.jpg",
-//       },
-//     ]);
-//   } catch (err) {
-//     console.error(err);
-//   }
-// };
