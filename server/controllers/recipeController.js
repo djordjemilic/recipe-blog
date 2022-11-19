@@ -118,3 +118,25 @@ exports.exploreLatest = async (req, res) => {
     res.status(500).send({ message: err.message || "Error occured" });
   }
 };
+
+// Explore Random
+exports.exploreRandom = async (req, res) => {
+  try {
+    let count = await Recipe.find().countDocuments();
+    let random = Math.floor(Math.random() * count);
+    let recipe = await Recipe.findOne().skip(random).exec();
+
+    res.render("explore-random", {
+      title: "Cooking Blog - Explore Random",
+      recipe,
+    });
+  } catch (err) {
+    res.status(500).send({ message: err.message || "Error occured" });
+  }
+};
+
+// Submit Recipe
+
+exports.submitRecipe = async (req, res) => {
+  res.render("submit-recipe", { title: "Cooking Blog - Submit Recipe" });
+};

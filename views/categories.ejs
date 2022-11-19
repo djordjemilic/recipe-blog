@@ -1,4 +1,4 @@
-<h1 class="pb-4">Explore categories</h1>
+<h2 class="pb-4">Explore categories</h2>
 
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -25,7 +25,7 @@
   <% }) %> <% } %>
 </div>
 
-<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+<div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 mb-4">
   <% if(typeof categoryByID !== 'undefined' && categoryByID.length > 0) { %> <%
   categoryByID.forEach((recipe,index)=>{ %>
   <a href="/recipe/<%= recipe._id %> " class="col text-center category__link">
