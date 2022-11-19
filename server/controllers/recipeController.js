@@ -45,3 +45,43 @@ exports.exploreCategories = async (req, res) => {
     res.status(500).send({ message: err.message || "Error occured" });
   }
 };
+
+// Recipe
+exports.exploreRecipes = async (req, res) => {
+  try {
+    let recipeID = req.params.id;
+
+    const recipe = await Recipe.findById(recipeID);
+
+    res.render("recipe", { title: "Cooking Blog - Recipe", recipe });
+  } catch (err) {
+    res.status(500).send({ message: err.message || "Error occured" });
+  }
+};
+
+// Contact
+exports.contact = async (req, res) => {
+  try {
+    res.render("contact", { title: "Cooking Blog - Contact" });
+  } catch (err) {
+    res.status(500).send({ message: err.message || "Error occured" });
+  }
+};
+
+// Explore Categories by ID
+exports.exploreCategoriesById = async (req, res) => {
+  try {
+    let categoryID = req.params.id;
+    const limitNumber = 20;
+    const categoryByID = await Recipe.find({ category: categoryID }).limit(
+      limitNumber
+    );
+
+    res.render("categories", {
+      title: "Cooking Blog - Categories",
+      categoryByID,
+    });
+  } catch (err) {
+    res.status(500).send({ message: err.message || "Error occured" });
+  }
+};

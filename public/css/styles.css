@@ -6,9 +6,14 @@
   max-width: 1530px;
 }
 
+html {
+  height: 100%;
+}
+
 body {
-  background-image: url("../img/i-like-food.svg");
-  background-color: rgb(243, 243, 243);
+  background: url("../img/i-like-food.svg");
+  min-height: 100%;
+  background-color: rgba(243, 243, 243, 0.127);
 }
 
 a {
@@ -48,3 +53,5 @@ a {
 .category__img--large {
   height: 330px;
 }
+
+/* Contact Page */
