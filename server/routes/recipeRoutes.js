@@ -8,5 +8,7 @@ router.get("/categories", recipeController.exploreCategories);
 router.get("/recipe/:id", recipeController.exploreRecipes);
 router.get("/categories/:id", recipeController.exploreCategoriesById);
 router.get("/contact", recipeController.contact);
+router.post("/search", recipeController.searchRecipe);
+router.get("/explore-latest", recipeController.exploreLatest);
 
 module.exports = router;
