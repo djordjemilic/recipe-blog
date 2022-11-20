@@ -1,5 +1,4 @@
-# recipe-blog
-Since I love to cook food, I decided to make this recipe blog so I can share some of my favourite recipes
+
 
 <!-- ABOUT THE PROJECT -->
 ## Recipe blog 
