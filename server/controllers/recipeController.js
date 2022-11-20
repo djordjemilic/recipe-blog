@@ -136,7 +136,53 @@ exports.exploreRandom = async (req, res) => {
 };
 
 // Submit Recipe
-
 exports.submitRecipe = async (req, res) => {
-  res.render("submit-recipe", { title: "Cooking Blog - Submit Recipe" });
+  const infoErrorsObj = req.flash("infoErrors");
+  const infoSubmitObj = req.flash("infoSubmit");
+
+  res.render("submit-recipe", {
+    title: "Cooking Blog - Submit Recipe",
+    infoErrorsObj,
+    infoSubmitObj,
+  });
+};
+
+// Submit Recipe on post
+exports.submitRecipeOnPost = async (req, res) => {
+  try {
+    let imageUploadFile;
+    let uploadPath;
+    let newImageName;
+
+    if (!req.files || Object.keys(req.files).length === 0) {
+      res.render("modal", { title: "Cooking blog - Error" });
+    } else {
+      imageUploadFile = req.files.img;
+      newImageName = Date.now() + imageUploadFile.name;
+
+      uploadPath =
+        require("path").resolve("./") + "/public/uploads/" + newImageName;
+
+      imageUploadFile.mv(uploadPath, (err) => {
+        if (err) return res.status(500).send(err);
+      });
+    }
+
+    const newRecipe = new Recipe({
+      name: req.body.name,
+      description: req.body.description,
+      email: req.body.email,
+      ingredients: req.body.ingredients,
+      category: req.body.category,
+      img: newImageName,
+    });
+
+    await newRecipe.save();
+
+    req.flash("infoSubmit", "Recipe has been added.");
+    res.redirect("/submit-recipe");
+  } catch (err) {
+    req.flash("infoErrors", err);
+    res.redirect("/submit-recipe");
+  }
 };

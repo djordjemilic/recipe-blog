@@ -12,7 +12,7 @@ html {
 
 body {
   background: url("../img/i-like-food.svg");
-  min-height: 100%;
+  height: 100%;
   background-color: rgba(243, 243, 243, 0.127);
 }
 
@@ -45,10 +45,6 @@ footer {
   transition: 250ms all;
 }
 
-.category__link:hover {
-  transform: scale(1.05);
-}
-
 .category__img {
   display: flex;
   justify-content: center;
@@ -66,8 +62,13 @@ footer {
   height: 100%;
 }
 
+.category__img img:hover {
+  transition: 0.5s ease-in-out;
+  transform: scale(1.1);
+}
+
 .category__img--large {
-  height: 330px;
+  height: 250px;
 }
 
 /* Contact Page */
