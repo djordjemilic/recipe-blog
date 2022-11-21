@@ -34,9 +34,7 @@ exports.homepage = async (req, res) => {
     );
 
     // Indian
-    const indian = await Recipe.find({ category: "Spanish" }).limit(
-      limitNumber
-    );
+    const indian = await Recipe.find({ category: "Indian" }).limit(limitNumber);
 
     const food = { latest, thai, american, chinese, mexican, spanish, indian };
 
