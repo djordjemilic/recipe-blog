@@ -1,7 +1,7 @@
 <section class="mb-5">
   <h2 class="pb-4">Explore Latest</h2>
 
-  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+  <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3 margin-bottom">
     <% if(recipe !== 'undefined' && recipe.length > 0) { %> <%
     recipe.forEach((recipe,index)=>{ %>
     <a href="/recipe/<%= recipe._id %> " class="col text-center category__link">

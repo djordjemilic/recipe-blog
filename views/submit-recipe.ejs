@@ -1,120 +1,126 @@
-<div class="px-4 py-5 my-5 text-center">
-  <h2 class="display-6 fw-bold">Submit your recipe</h2>
-  <div class="col-lg-6 mx-auto">
-    <p class="lead">Have a recipe? Share your recipe for the world to see</p>
+<section class="height">
+  <div class="px-4 py-5 my-5 text-center">
+    <h2 class="display-6 fw-bold">Submit your recipe</h2>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead">Have a recipe? Share your recipe for the world to see</p>
+    </div>
   </div>
-</div>
 
-<div class="row justify-content-center mb-5">
-  <% if(infoSubmitObj != '') { %>
-  <div class="col-8 alert alert-success" role="alert"><%= infoSubmitObj %></div>
-  <% } %> <% if(infoErrorsObj != '') { %>
-  <div class="col-8 alert alert-danger" role="alert"><%= infoErrorsObj %></div>
-  <% } %>
+  <div class="row justify-content-center mb-5">
+    <% if(infoSubmitObj != '') { %>
+    <div class="col-8 alert alert-success" role="alert">
+      <%= infoSubmitObj %>
+    </div>
+    <% } %> <% if(infoErrorsObj != '') { %>
+    <div class="col-8 alert alert-danger" role="alert">
+      <%= infoErrorsObj %>
+    </div>
+    <% } %>
 
-  <div class="col-8 mb-4">
-    <form action="/submit-recipe" enctype="multipart/form-data" method="post">
-      <div class="row g-3">
-        <div class="col-12">
-          <label for="email" class="form-label">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Email"
-            style="background-color: #fff"
-            class="form-control shadow-none"
-            required
-          />
-        </div>
-        <div class="col-12">
-          <label for="name" class="form-label">Recipe name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Recipe name"
-            style="background-color: #fff"
-            class="form-control shadow-none"
-            required
-          />
-        </div>
+    <div class="col-8 mb-4">
+      <form action="/submit-recipe" enctype="multipart/form-data" method="post">
+        <div class="row g-3">
+          <div class="col-12">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              style="background-color: #fff"
+              class="form-control shadow-none"
+              required
+            />
+          </div>
+          <div class="col-12">
+            <label for="name" class="form-label">Recipe name</label>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Recipe name"
+              style="background-color: #fff"
+              class="form-control shadow-none"
+              required
+            />
+          </div>
 
-        <div class="col-12">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            cols="30"
-            rows="4"
-            name="description"
-            id="description"
-            class="form-control shadow-none"
-            style="background-color: #fff"
-            required
-          ></textarea>
-        </div>
+          <div class="col-12">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              cols="30"
+              rows="4"
+              name="description"
+              id="description"
+              class="form-control shadow-none"
+              style="background-color: #fff"
+              required
+            ></textarea>
+          </div>
 
-        <div class="col-12">
-          <label for="name" class="form-label">Ingredients</label> <br />
-          <small>Example: Eggs</small>
-          <div class="ingredientList">
-            <div class="ingredientDiv mb-1">
-              <input
-                type="text"
-                name="ingredients"
-                placeholder="Ingredients"
-                style="background-color: #fff"
-                class="form-control shadow-none"
-                required
-              />
+          <div class="col-12">
+            <label for="name" class="form-label">Ingredients</label> <br />
+            <small>Example: Eggs</small>
+            <div class="ingredientList">
+              <div class="ingredientDiv mb-1">
+                <input
+                  type="text"
+                  name="ingredients"
+                  placeholder="Ingredients"
+                  style="background-color: #fff"
+                  class="form-control shadow-none"
+                  required
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="col-12">
-          <button
-            class="btn btn-outline-dark"
-            type="button"
-            id="addIngredientsBtn"
-          >
-            + Ingredient
-          </button>
-        </div>
+          <div class="col-12">
+            <button
+              class="btn btn-outline-dark"
+              type="button"
+              id="addIngredientsBtn"
+            >
+              + Ingredient
+            </button>
+          </div>
 
-        <div class="col-12">
-          <label for="category ">Select category</label>
-          <select
-            name="category"
-            class="form-select form-control shadow-none"
-            aria-label="Category"
-            style="background-color: #fff"
-            required
-          >
-            <option selected>Select category</option>
-            <option value="Thai">Thai</option>
-            <option value="American">American</option>
-            <option value="Chinese">Chinese</option>
-            <option value="India">India</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Spanish">Spanish</option>
-          </select>
-        </div>
+          <div class="col-12">
+            <label for="category ">Select category</label>
+            <select
+              name="category"
+              class="form-select form-control shadow-none"
+              aria-label="Category"
+              style="background-color: #fff"
+              required
+            >
+              <option selected>Select category</option>
+              <option value="Thai">Thai</option>
+              <option value="American">American</option>
+              <option value="Chinese">Chinese</option>
+              <option value="India">India</option>
+              <option value="Mexican">Mexican</option>
+              <option value="Spanish">Spanish</option>
+            </select>
+          </div>
 
-        <div class="col-12">
-          <label for="img">Image</label>
-          <input
-            type="file"
-            class="form-control shadow-none"
-            name="img"
-            accept="image/*"
-            style="background-color: #fff"
-            required
-          />
-        </div>
+          <div class="col-12">
+            <label for="img">Image</label>
+            <input
+              type="file"
+              class="form-control shadow-none"
+              name="img"
+              accept="image/*"
+              style="background-color: #fff"
+              required
+            />
+          </div>
 
-        <div class="col-12">
-          <button type="submit" class="btn btn-dark">Submit recipe</button>
+          <div class="col-12">
+            <button type="submit" class="btn btn-dark">Submit recipe</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
-</div>
+</section>

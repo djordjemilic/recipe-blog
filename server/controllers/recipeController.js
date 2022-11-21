@@ -23,7 +23,22 @@ exports.homepage = async (req, res) => {
       limitNumber
     );
 
-    const food = { latest, thai, american, chinese };
+    // Mexican
+    const mexican = await Recipe.find({ category: "Mexican" }).limit(
+      limitNumber
+    );
+
+    // Spanish
+    const spanish = await Recipe.find({ category: "Spanish" }).limit(
+      limitNumber
+    );
+
+    // Indian
+    const indian = await Recipe.find({ category: "Spanish" }).limit(
+      limitNumber
+    );
+
+    const food = { latest, thai, american, chinese, mexican, spanish, indian };
 
     res.render("index", { title: "Cooking Blog - Homepage", categories, food });
   } catch (err) {
@@ -184,5 +199,15 @@ exports.submitRecipeOnPost = async (req, res) => {
   } catch (err) {
     req.flash("infoErrors", err);
     res.redirect("/submit-recipe");
+  }
+};
+
+// About Page
+
+exports.about = async (req, res) => {
+  try {
+    res.render("about", { title: "Cooking Blog - About" });
+  } catch (err) {
+    res.status(500).send({ message: err.message || "Error occured" });
   }
 };

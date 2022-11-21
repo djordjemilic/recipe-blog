@@ -71,4 +71,12 @@ footer {
   height: 250px;
 }
 
-/* Contact Page */
+.height {
+  height: 100vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .height {
+    height: unset;
+  }
+}
